@@ -11,15 +11,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @JsonIdentityInfo(
-		generator= ObjectIdGenerators.PropertyGenerator.class,
+		generator = ObjectIdGenerators.PropertyGenerator.class,
 		property = "codigoLivro")
 @Entity
 @Table(name = "livros")
@@ -27,13 +27,13 @@ public class Livro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "codigolivro")
-	private Integer codigoLivro;
+	private Integer codigoLivro; 
 
 	@Column(name = "nomelivro")
-	private String nomeLivro;
+	private String nomeLivro; //findByNomeLivro
 
 	@Column(name = "nomeautor")
-	private String nomeAutor;
+	private String nomeAutor; //findByNomeAutor
 
 	@Column(name = "datalancamento")
 	private Instant dataLancamento;
@@ -41,8 +41,9 @@ public class Livro {
 	@Column(name = "codigoisbn")
 	private Integer codigoIsbn;
 
-	@ManyToOne	
-	private Editora editora;
+	@ManyToOne
+	@JoinColumn(name = "codigoeditora", referencedColumnName = "codigoeditora")
+	private Editora editora; //findByEditora
 
 	@OneToMany(mappedBy = "livro")
 	private Set<Emprestimo> emprestimos;
@@ -102,6 +103,4 @@ public class Livro {
 	public void setEmprestimos(Set<Emprestimo> emprestimos) {
 		this.emprestimos = emprestimos;
 	}
-
-	
 }
