@@ -38,6 +38,9 @@ public class Editora {
       
 
 	}
+	public Editora() {
+		// TODO Auto-generated constructor stub
+	}
 	public Integer getCodigoEditora() {
 		return codigoEditora;
 	}

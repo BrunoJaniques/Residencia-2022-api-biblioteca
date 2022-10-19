@@ -1,39 +1,61 @@
 package br.com.residencia.biblioteca.dto;
 
 import java.util.List;
-import java.util.stream.Collectors;
-
-import br.com.residencia.biblioteca.entity.Editora;
-
 
 public class EditoraDTO {
 	private Integer codigoEditora;
 	private String nome;
+	private String imagemNome;
+	private String imagemFileName;
+	private String imagemUrl;
 	
-	
-	public EditoraDTO(Editora editora) {
-		 	this.codigoEditora = editora.getCodigoEditora();
-	        this.nome= editora.getNome();
-	      
-	}
-	public EditoraDTO(Integer codigoEditora, String nome) {
-		this.codigoEditora = codigoEditora;
-		this.nome = nome;
-	}
+	private List<LivroDTO> listaLivrosDTO;
+
 	public Integer getCodigoEditora() {
 		return codigoEditora;
 	}
+
 	public void setCodigoEditora(Integer codigoEditora) {
 		this.codigoEditora = codigoEditora;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
+	public List<LivroDTO> getListaLivrosDTO() {
+		return listaLivrosDTO;
 	}
-	
-	
 
+	public void setListaLivrosDTO(List<LivroDTO> listaLivrosDTO) {
+		this.listaLivrosDTO = listaLivrosDTO;
+	}
+
+	public String getImagemNome() {
+		return imagemNome;
+	}
+
+	public void setImagemNome(String imagemNome) {
+		this.imagemNome = imagemNome;
+	}
+
+	public String getImagemFileName() {
+		return imagemFileName;
+	}
+
+	public void setImagemFileName(String imagemFileName) {
+		this.imagemFileName = imagemFileName;
+	}
+
+	public String getImagemUrl() {
+		return imagemUrl;
+	}
+
+	public void setImagemUrl(String imagemUrl) {
+		this.imagemUrl = imagemUrl;
+	}
+}
